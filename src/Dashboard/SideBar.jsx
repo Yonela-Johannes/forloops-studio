@@ -10,7 +10,7 @@ const SideBar = () => {
   const navigate = useNavigate()
 
   return (
-    <div className='max-w-[280px] min-w-[280px]'>
+    <div className='hidden 2xl:block max-w-[280px] min-w-[280px]'>
       <div aria-label="Sidebar" className='hidden md:block bg-cl p-4'>
         <div>
           <ul>

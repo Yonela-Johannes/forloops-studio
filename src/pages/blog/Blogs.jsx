@@ -40,7 +40,7 @@ const Blogs = () => {
             Uncovering the Latest in News, Blogs, Articles, and Inspirational Biographies in local music.
             </p>
           </div>
-          <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-4 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+          <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-4 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {blogs?.map((blog) => (
               <article onClick={() => viewPost(blog)} key={blog._id} className="flex max-w-xl flex-col items-start justify-between cursor-pointer">
                 <div className="flex items-center gap-x-4 text-xs">
@@ -54,7 +54,7 @@ const Blogs = () => {
                     {blog?.category.title}
                   </p>
                 </div>
-                 <img src={blog?.image} alt="display" className="md:w-[300px] md:h-[250px] object-cover rounded-md" />
+                 <img src={blog?.image} alt="display" className="w-full object-cover rounded-md" />
                   <div className="flex justify-between w-full">
                     <div className="group relative">
                       <h3 className="mt-1 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">

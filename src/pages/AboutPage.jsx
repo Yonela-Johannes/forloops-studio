@@ -5,7 +5,7 @@ import FooterMain from './shared/FooterMain'
 
 function AboutPage() {
   return (
-    <div className="flex flex-col items-center justify-center bg-cl md:w-[1200px] mx-auto h-full">
+    <div className="flex flex-col items-center justify-center bg-cl w-full mx-auto h-full">
       <Information />
       <About />
       <div className="mt-20">

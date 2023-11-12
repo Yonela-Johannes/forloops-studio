@@ -16,7 +16,6 @@ const Artists = () => {
 
     fetchArtists()
   }, []);
-  console.log(artists)
 
   const columns: GridColDef[] = [
     {

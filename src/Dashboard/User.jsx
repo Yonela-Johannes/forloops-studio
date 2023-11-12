@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 
 const User = () => {
-  const {_id, isAdmin } = useSelector((state) => state.auth);
+  const { _id, isAdmin } = useSelector((state) => state.auth);
   const [userData, setUserData] = useState({
     given_name: '',
     family_name: '',

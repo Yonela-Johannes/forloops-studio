@@ -36,9 +36,9 @@ const Blog = () => {
   return (
     <div>
       <Toaster />
-      <div className="flex flex-col md:flex-row p-1 bg-white pb-24 sm:pb-32 ">
+      <div className="flex flex-col xl:flex-row p-1 bg-white pb-24 sm:pb-32 ">
         <div className=" lg:flex-1 md:p-4">
-          <img src={blog?.image} alt="" className="md:h-[700px] h-[300px] mb-4 object-contain md:object-cover w-full bg-gray-50" />
+          <img src={blog?.image} alt="" className="md:h-[700px] h-[300px] mb-4 bg-red object-cover  w-full" />
           <div className="flex justify-between items-start">
             <div className="">
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">{blog?.title}</h2>
@@ -82,8 +82,7 @@ const Blog = () => {
                       {blog?.title}
                     </p>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-mdp
-                  leading-6 text-black">{ReactHtmlParser(blog?.post)}</p>
+                  <p className="p-1 text-start mt-5 text-md leading-6 text-black">{ReactHtmlParser(blog?.post)}</p>
                 </div>
                 <div className="relative mt-8 flex items-center gap-x-4">
                   <img src={blog?.user?.picture} alt="" className="h-10 w-10 rounded-full bg-gray-50" />

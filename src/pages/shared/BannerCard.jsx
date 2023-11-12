@@ -7,9 +7,6 @@ import { baseUrl } from '../../constants/base_urls';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 
-// banner card styles
-import './bannerCard.css'
-
 // import required modules
 import { EffectCards } from 'swiper/modules';
 
@@ -25,7 +22,7 @@ function BannerCard() {
   }, []);
 
   return (
-    <div className='banner-card'>
+    <div className={`flex justify-center items-center rounded-md bg-red w-[180px]`}>
       <Swiper
         effect={'cards'}
         grabCursor={true}
@@ -33,7 +30,7 @@ function BannerCard() {
         className="mySwiper"
       >
       {artists?.map((artist) => (
-        <SwiperSlide><img src={artist?.picture} className='rounded-md' alt="slide" /></SwiperSlide>
+        <SwiperSlide><img src={artist?.picture} className='w-full' alt="slide" /></SwiperSlide>
       ))}
       </Swiper>
     </div>

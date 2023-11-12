@@ -22,18 +22,21 @@ const Searchbar = () => {
   }
 
   return (
-  <div className="flex items-center justify-between h-[100px] md:px-20 md:p-6 ">
-      <Link to='/songs'>
-      <div className="flex text-center md:bg-cl items-center text-red font-bold md:pr-3 rounded-full">
-          <img src={logo}  alt='logo' className="w-14 h-14 object-center object-cover"/>
-          <p className="hidden md:block text-[18px]">forloops Studio</p>
-          <p className="md:hidden text-[18px]">fl Studio</p>
+  <div className="flex items-center justify-between h-[120px] mb-10 mt-5 md:px-20 md:p-6 ">
+    <Link to='/songs'>
+      <div className="flex text-center items-center text-red font-bold md:pr-3 rounded-full">
+          <img src={logo}  alt='logo' className="hidden lg:block w-14 h-14 object-center object-cover"/>
       </div>
     </Link>
-    <div className="flex items-center gap-8 mr-12 md:mr-0">
-    <div className="flex justify-between items-center gap-x-4">
+    <div className="flex items-center gap-4 justify-start lg:justify-end w-full lg:mr-12 md:mr-0">
+      <div className="flex justify-between items-center gap-x-4">
+      <Link to='/songs'>
+        <div className="flex md:hidden text-center md:bg-cl items-center text-red font-bold rounded-full bg-black">
+            <img src={logo}  alt='logo' className="w-[34px] h-[34px] object-center object-cover"/>
+        </div>
+      </Link>
       {isAdmin && (
-      <div className="flex gap-x-4 items-center">
+      <div className="gap-x-4 items-center hidden 2xl:flex">
         <button
           onClick={() => navigate('/admin/dashboard')}
           className="
@@ -44,8 +47,9 @@ const Searchbar = () => {
           bg-black
           border
           border-transparent
-          px-3
-          py-2
+          lg:px-3
+          lg:py-2
+          p-2
           hover:opacity-75
           transition"
         >
@@ -65,8 +69,9 @@ const Searchbar = () => {
               bg-black
               border
               border-transparent
-              px-3
-              py-2
+              lg:px-3
+              lg:py-2
+              p-2
               hover:opacity-75
               transition"
             >
@@ -85,8 +90,9 @@ const Searchbar = () => {
               bg-black
               border
               border-transparent
-              px-3
-              py-2
+              lg:px-3
+              lg:py-2
+              p-2
               hover:opacity-75
               transition"
             >
@@ -105,8 +111,9 @@ const Searchbar = () => {
               bg-black
               border
               border-transparent
-              px-3
-              py-2
+              lg:px-3
+              lg:py-2
+              p-2
               hover:opacity-75
               transition"
             >
@@ -114,8 +121,8 @@ const Searchbar = () => {
               <p className="hidden md:block">Blogs</p>
             </button>
           </div>
-        </div>
-      <div className="hidden md:block w-[400px]">
+      </div>
+      <div className="hidden 2xl:block w-[400px]">
         <form autoComplete="off" className="p2" onSubmit={handleSubmit}>
           <div className="flex flex-row justify-start items-center bg-black p-2 rounded-full mx-2">
             <FiSearch className="w-7 h-7" />
@@ -132,7 +139,7 @@ const Searchbar = () => {
           </div>
         </form>
       </div>
-        <div className="flex justify-between items-center gap-x-4">
+        <div className="flex justify-between items-center">
           {_id ? (
             <div className="flex gap-x-4 items-center">
               <button
@@ -145,8 +152,9 @@ const Searchbar = () => {
                 bg-black
                 border
                 border-transparent
-                px-3
-                py-2
+                lg:px-3
+                lg:py-2
+                p-2
                 hover:opacity-75
                 transition"
               >
@@ -155,7 +163,6 @@ const Searchbar = () => {
               </button>
             </div>
           ) : (
-            <div>
               <button
                 onClick={() => navigate('/signin')}
                 className="
@@ -163,11 +170,13 @@ const Searchbar = () => {
                   font-medium
                   w-full
                   rounded-full
-                  bg-red
+                  bg-cl
                   border
                   border-transparent
-                  px-3
-                  py-2
+                  lg:px-3
+                  lg:py-2
+                  p-2
+                  m-0
                   hover:opacity-75
                   transition
                   cursor-pointer
@@ -175,7 +184,6 @@ const Searchbar = () => {
                 <div className="md:hidden"><MdLogin /></div>
                 <p className="hidden md:block">Sign in</p>
               </button>
-            </div>
           )}
         </div>
     </div>

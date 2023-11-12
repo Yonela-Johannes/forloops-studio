@@ -18,7 +18,7 @@ const BookCards = ({headline, albums}) => {
   console.log(albums)
     return (
         <div className='my-16 px-4 lg:px-24'>
-            <h2 className='text-5xl my-5 font-bold text-center'>{headline}</h2>
+            <h2 className='text-xl md:text-5xl my-5 font-semibold text-center'>{headline}</h2>
 
             {/* cards */}
             <div className='mt-20'>

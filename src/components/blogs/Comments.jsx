@@ -96,13 +96,13 @@ const Comments = ({
   };
 
   return (
-    <div className="md:w-[450px] p-4 text-black bg-gray-100 mt-4">
+    <div className="md:w-[450px] md:p-4 text-black bg-gray-100 mt-4">
       <Toaster />
       {email && (
         <div className="pb-2 px-2">
           <div className="flex gap-4">
             {!activeEditComment ? (
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col md:flex-row gap-4 w-full">
                 <textarea
                   value={comment}
                   onChange={handleComment}
@@ -136,7 +136,7 @@ const Comments = ({
                       layout="responsive"
                     />
                   </div>
-                  <p className={`flex cursor-pointer gap-1 items-center text-sm md:text-[18px] md:font-bold leading-6 text-primary`}>
+                  <p className={`flex cursor-pointer gap-1 items-center text-gray-600 text-[12px] md:text-[18px] md:font-bold leading-6 text-primary`}>
                     {com?.user?.given_name} {com?.user?.family_name}
                     {com?.user?.isAdmin && (
                       <GoVerified />
@@ -160,7 +160,7 @@ const Comments = ({
                 Save
               </button>
                   </div>
-                ) : (<p className="ml-16 text-sm md:text-[16px] md:mr-8">{com?.comment}</p>)}
+                ) : (<p className="ml-16 text-[13px] md:text-[16px] md:mr-8 text-background">{com?.comment}</p>)}
                 <div className="flex flex-col gap-4">
                   <div onClick={() => likePost(com)} className={`flex items-center justify-center rounded-full ${_id ? 'hover:bg-gray-300 duration-300 cursor-pointer' : ''}  p-1  gap-1 text-sm`} >
                     {com?.lovedUsers?.includes(_id) ? (<AiFillLike size={18} />) : (<AiOutlineLike size={18} />)}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, HiOutlineUser, HiOutlineUserGroup } from 'react-icons/hi';
+import { HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, HiOutlineUserGroup } from 'react-icons/hi';
 import { RiCloseLine } from 'react-icons/ri';
 import logo from '../assets/fl.png'
 import { useSelector } from 'react-redux';
@@ -18,9 +18,9 @@ const NavLinks = ({ handleClick }) => (
   <div className="flex flex-col mt-2">
     {links.map((item) => (
       <NavLink
-        key={item.name}
         to={item.to}
-        className="flex flex-row justify-start items-center gap-1 my-5 text-sm font-medium text-gray-400 hover:text-red duration-300"
+        key={item.name}
+        className="flex flex-row justify-start items-center gap-1 my-5 text-sm font-medium text-gray-400 hover:text-cl duration-300"
         onClick={() => handleClick && handleClick()}
       >
         <item.icon className="w-6 h-6 mr-2" />
@@ -54,10 +54,10 @@ const Sidebar = () => {
           )}
         </div>
 
-        <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#483D8B] backdrop-blur-lg z-10 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : '-left-full'}`}>
+        <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-red backdrop-blur-lg z-40 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : '-left-full'}`}>
           <img src={logo} alt="logo" className="w-full h-20 object-contain" />
           <NavLinks handleClick={() => setMobileMenuOpen(false)} />
-          <div className="flex justify-center md:block w-18 h-16 items-center">
+          <div onClick={() => navigate(`/user/${_id}`)} className="flex justify-center md:block w-18 h-16 items-center">
             {_id && (<img src={picture} className="w-11 h-11 object-center object-cover rounded-full" />)}
           </div>
         </div>
