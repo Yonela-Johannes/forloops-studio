@@ -54,7 +54,6 @@ const App = () => {
                   <Route path="/admin/dashboard/blog/:id" element={<EditBlogPopup />} />
                   {/* User private routes */}
                   <Route path="/user/:id" element={<UserProfileRoute><User /></UserProfileRoute>} />
-                  {/* <Route path="/artist/:id" element={<UserProfileRoute><Artists /></UserProfileRoute>} /> */}
                   {/* user/public routers */}
                   <Route path="/songs" element={<Songs />} />
                   <Route path="/" element={<Home />} />
@@ -67,6 +66,7 @@ const App = () => {
                   <Route path="/songs/:songid" element={<SongDetails />} />
                   <Route path="/album/:albumid" element={<AlbumDetails />} />
                   <Route path="/artists" element={<TopArtists />} />
+                  <Route path="/artists/:id" element={<Artist />} />
                   <Route path="/create-artist" element={<CreateArtistPopup />} />
                   <Route path="/artist/:id" element={<ArtistDetails />} />
                   <Route path="/search/:searchTerm" element={<Search />} />

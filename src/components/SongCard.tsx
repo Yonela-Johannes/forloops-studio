@@ -15,7 +15,7 @@ const SongCard = ({song, isPlaying, activeSong , i, data}) => {
   const handlePlayClick = async () => {
     dispatch(setActiveSong({ song, data, i}))
     dispatch(playPause(true))
-    await axios.patch(`${baseUrl}songs/play/${activeSong?._id}`);
+    await axios.patch(`${baseUrl}songs/play/${song?._id}`);
   }
 
   return (

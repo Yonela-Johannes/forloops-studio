@@ -20,7 +20,7 @@ const NavLinks = ({ handleClick }) => (
       <NavLink
         to={item.to}
         key={item.name}
-        className="flex flex-row justify-start items-center gap-1 my-5 text-sm font-medium text-gray-400 hover:text-cl duration-300"
+        className="flex flex-row justify-start items-center gap-1 my-5 text-sm font-medium text-gray-400 hover:bg-cl p-2 rounded-full duration-300"
         onClick={() => handleClick && handleClick()}
       >
         <item.icon className="w-6 h-6 mr-2" />

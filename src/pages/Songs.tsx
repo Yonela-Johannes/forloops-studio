@@ -13,7 +13,7 @@ const Songs = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(baseUrl + 'songs');
+      const result = await axios.get(`${baseUrl}songs`);
       setSongs(result?.data)
     }
     fetchData()
