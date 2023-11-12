@@ -3,6 +3,7 @@ import { Error, Loader, SongCard } from '../components'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { baseUrl } from '../constants/base_urls'
+import TopPlay from '../components/TopPlay'
 
 const Songs = () => {
   // const [music, setMusic] = useState()
@@ -19,21 +20,24 @@ const Songs = () => {
   }, [])
 
   return (
-  <div className='flex flex-col text-center'>
-    <h2 className="font-bold text-3xl text-white text-left mt-4 mb-10">Discover Top Songs</h2>
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-          {songs?.map((song, i) => (
-            <SongCard
-                key={song.key}
-                song={song}
-                activeSong={activeSong}
-                isPlaying={isPlaying}
-                data={songs}
-                i={i}
-            />
-          ))}
+    <div className="flex flex-col items-center md:items-start md:flex-row gap-8">
+      <div className='flex flex-grow flex-col text-center'>
+        <h2 className="font-bold text-3xl text-white text-left mt-4 mb-10">Discover Top Songs</h2>
+          <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+              {songs?.map((song, i) => (
+                <SongCard
+                    key={song.key}
+                    song={song}
+                    activeSong={activeSong}
+                    isPlaying={isPlaying}
+                    data={songs}
+                    i={i}
+                />
+              ))}
+          </div>
       </div>
-  </div>
+      <TopPlay />
+    </div>
   )
 }
 export default Songs;

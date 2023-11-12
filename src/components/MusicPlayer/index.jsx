@@ -7,9 +7,6 @@ import Player from './Player';
 import Seekbar from './Seekbar';
 import Track from './Track';
 import VolumeBar from './VolumeBar';
-import axios from 'axios';
-import { baseUrl } from '../../constants/base_urls';
-import LikeButton from './LikeButton';
 
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } = useSelector((state) => state.player);
@@ -57,9 +54,10 @@ const MusicPlayer = () => {
 
   return (
     <div className="relative sm:px-12  px-8 w-full bg-[transparent] flex items-center justify-between">
-      <div className="flex items-center gap-4 flex-1">
-        <Track isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
-        {/* <LikeButton songId={activeSong?._id} /> */}
+      <div className="flex items-center flex-1">
+        <div className="flex items-center gap-8">
+          <Track isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
+        </div>
       </div>
       <div className="flex-1 flex flex-col items-center justify-center">
         <Controls

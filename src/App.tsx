@@ -12,8 +12,20 @@ import ArtistDetails from './pages/ArtistDetails';
 import TopArtists from './pages/TopArtists';
 import Signin from './pages/auth/Signin';
 import CreateArtistPopup from './pages/CreateArtistPopup';
-import routeMiddleware from './routeMiddleware';
-import About from './pages/About';
+import { Home } from './pages/Home/Home';
+import Blog from './pages/blog/Blog';
+import { DashboardLayout } from './Dashboard/DashboardLayout';
+import AboutPage from './pages/AboutPage';
+import Blogs from './pages/blog/Blogs';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import BlogPopup from './components/blogs/BlogPopup';
+import Users from './Dashboard/users/Users';
+import User from './Dashboard/User';
+import UserProfileRoute from './helpers/UserProfileRoute';
+import Artists from './Dashboard/users/Artists';
+import Artist from './Dashboard/Artist';
+import ManageBlogs from './Dashboard/ManageBlogs';
+import EditBlogPopup from './components/blogs/EditBlogPopup';
 
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
@@ -29,7 +41,26 @@ const App = () => {
               <Searchbar />
               <div className="flex-1 h-fit pb-40">
                 <Routes>
-                  <Route path="/" element={<Songs />} />
+                  {/* Dashboard routes */}
+                  <Route path="/admin/dashboard" element={<PrivateRoute><DashboardLayout /></PrivateRoute>} />
+                  <Route path="/admin/dashboard/users" element={<PrivateRoute><Users /></PrivateRoute>} />
+                  <Route path="/admin/dashboard/admin/:id" element={<UserProfileRoute><Users /></UserProfileRoute>} />
+                  <Route path="/admin/dashboard/user/:id" element={<PrivateRoute><User /></PrivateRoute>} />
+                  <Route path="/admin/upload-song" element={<SongPopup />} />
+                  <Route path="/admin/dashboard/admin/:id" element={<UserProfileRoute><Users /></UserProfileRoute>} />
+                  <Route path="/admin/dashboard/artists" element={<PrivateRoute><Artists /></PrivateRoute>} />
+                  <Route path="/admin/dashboard/artist/:id" element={<Artist />} />
+                  <Route path="/admin/dashboard/blogs" element={<ManageBlogs />} />
+                  <Route path="/admin/dashboard/blog/:id" element={<EditBlogPopup />} />
+                  {/* User private routes */}
+                  <Route path="/user/:id" element={<UserProfileRoute><User /></UserProfileRoute>} />
+                  {/* <Route path="/artist/:id" element={<UserProfileRoute><Artists /></UserProfileRoute>} /> */}
+                  {/* user/public routers */}
+                  <Route path="/songs" element={<Songs />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/create-blog" element={<PrivateRoute><BlogPopup /></PrivateRoute>} />
+                  <Route path="/blogs" element={<Blogs />} />
+                  <Route path="/blogs/:id" element={<Blog />} />
                   <Route path="/signin" element={<Signin />} />
                   <Route path="/albums" element={<Albums />} />
                   <Route path="/upload-song" element={<SongPopup />} />
@@ -37,19 +68,17 @@ const App = () => {
                   <Route path="/album/:albumid" element={<AlbumDetails />} />
                   <Route path="/artists" element={<TopArtists />} />
                   <Route path="/create-artist" element={<CreateArtistPopup />} />
-                  <Route path="/artists/:id" element={<ArtistDetails />} />
+                  <Route path="/artist/:id" element={<ArtistDetails />} />
                   <Route path="/search/:searchTerm" element={<Search />} />
-                  <Route path="/about" element={<About />} />
+                  <Route path="/about" element={<AboutPage />} />
                 </Routes>
               </div>
-              <div className="xl:sticky relative top-0 h-fit">
-            {/* <TopPlay /> */}
-          </div>
         </div>
+
       </div>
 
       {activeSong?.title && (
-        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup md:bg-transparent md:bg-gradient-to-r md:from-black md:backdrop-blur-sm z-10 bg-cl">
+        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup md:bg-transparent md:bg-gradient-to-r md:from-red md:backdrop-blur-sm z-50 bg-cl">
           <MusicPlayer />
         </div>
       )}

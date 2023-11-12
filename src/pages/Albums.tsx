@@ -6,10 +6,7 @@ import { baseUrl } from '../constants/base_urls'
 import AlbumCard from '../components/AlbumCard'
 
 const Albums = () => {
-  // const [music, setMusic] = useState()
-  // const { activeSong, isPlaying } = useSelector((state) => state.player);
   const [albums, setAlbums]  = useState([])
-  // if(isFetching, !data) return <Loader title="loading albums" />;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,8 +24,6 @@ const Albums = () => {
             <AlbumCard
                 key={album?._id}
                 album={album}
-                // activeSong={activeSong}
-                // isPlaying={isPlaying}
                 data={albums}
                 i={i}
             />

@@ -23,7 +23,7 @@ const Search = () => {
     return (
         <div className='flex flex-col text-center'>
             <div className='w-full flex justify-between px-4 items-center sm:flex-row flex-col mt-4 mb-10'>
-                <h2 className='font-bold text-3xl text-[#008C76FF]'>You are looking for, {searchTerm}</h2>
+                <h2 className='text-base md:text-xl text-white'>You are looking for, {searchTerm}</h2>
             </div>
 
             <div className="flex flex-wrap sm:justify-start justify-center gap-8 md:px-10">

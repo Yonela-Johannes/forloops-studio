@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import PlayPause from './PlayPause'
 import { playPause, setActiveSong } from '../redux/features/playerSlice'
+import axios from "axios";
+import { baseUrl } from "../constants/base_urls";
 
 const SongCard = ({song, isPlaying, activeSong , i, data}) => {
   const dispatch = useDispatch()
@@ -10,9 +12,10 @@ const SongCard = ({song, isPlaying, activeSong , i, data}) => {
     dispatch(playPause(false))
   }
 
-  const handlePlayClick = () => {
+  const handlePlayClick = async () => {
     dispatch(setActiveSong({ song, data, i}))
     dispatch(playPause(true))
+    await axios.patch(`${baseUrl}songs/play/${activeSong?._id}`);
   }
 
   return (

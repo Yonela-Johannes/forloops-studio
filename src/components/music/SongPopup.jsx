@@ -5,6 +5,7 @@ import { useState } from "react"
 import CreateAlbum from "./CreateAlbum"
 import { useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
+import SideBar from '../../Dashboard/SideBar';
 
 const SongPopup = () => {
   const { isAdmin } = useSelector((state) => state.auth)
@@ -12,13 +13,15 @@ const SongPopup = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAdmin) {
+    if (isAdmin === false) {
       navigate('/');
       setAlbumPopup(false);
     }
   }, []);
 
   return (
+    <div className='flex'>
+      {isAdmin && (<SideBar />)}
       <div className="relative flex flex-col m-auto my-2 md:my-10 items-center justify-center bg-bg_alt pt-10 pb-4 w-[320px] md:w-[1000px] self-center rounded-lg md:px-10 md:p-20">
         <div onClick={() => setAlbumPopup(!albumPopup)} className="absolute top-0 right-5 cursor-pointer flex items-center gap-2 justify-center">
           <MdAdd siz={22} />
@@ -33,6 +36,7 @@ const SongPopup = () => {
           {albumPopup ? (<CreateAlbum setAlbumPopup={setAlbumPopup} />) : (<CreateSong />)}
         </div>
       </div>
+    </div>
   )
 }
 

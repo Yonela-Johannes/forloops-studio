@@ -18,7 +18,7 @@ const ArtistDetails = () => {
   useEffect(() => {
     const fetchArtist = async () => {
       const response = await axios.get(`${baseUrl}artists/${id}`);
-      setArtist(response?.data);
+      setArtist(response?.data?.artist);
     };
     fetchArtist();
   }, []);

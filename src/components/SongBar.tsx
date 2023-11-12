@@ -6,9 +6,10 @@ import { FaDownload } from 'react-icons/fa';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { baseUrl } from '../constants/base_urls';
+import { useSelector } from 'react-redux';
 
 const SongBar = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick, albumid, setSongs }) => {
-
+  const { _id } = useSelector((state) => state.auth);
   const handleDownload = async () => {
     // Create a new Blob object from the audio URL.
     fetch(song?.song)
@@ -32,8 +33,8 @@ const SongBar = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayC
       .catch(error => {
         console.error('Error downloading the audio:', error);
       })
-      await axios.patch(baseUrl + '/songs/download/' + song?._id);
-      const result = await axios.get(baseUrl + '/album/songs/' + albumid);
+      await axios.patch(`${baseUrl}songs/download/${song?._id}`, {userId: _id});
+      const result = await axios.get(`${baseUrl}album/songs/${albumid}`);
       setSongs(result?.data);
   };
 

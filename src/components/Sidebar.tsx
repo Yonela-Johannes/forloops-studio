@@ -4,12 +4,13 @@ import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, Hi
 import { RiCloseLine } from 'react-icons/ri';
 import logo from '../assets/fl.png'
 import { useSelector } from 'react-redux';
+import { MdOutlineFeed } from 'react-icons/md';
 
 const links = [
-  { name: 'Songs', to: '/', icon: HiOutlineHome },
+  { name: 'Songs', to: '/songs', icon: HiOutlineHome },
   { name: 'Albums', to: '/albums', icon: HiOutlinePhotograph },
   { name: 'Artists', to: '/artists', icon: HiOutlineUserGroup },
-  { name: 'About', to: '/about', icon: HiOutlineUser },
+  { name: 'Blogs', to: '/blogs', icon: MdOutlineFeed },
 
 ];
 
@@ -38,7 +39,7 @@ const Sidebar = () => {
     <div className='flex flex-col items-center justify-between mb-10'>
       <div className='h-full w-full'>
         <div className="md:flex hidden flex-col w-[240px] py-4 px-4 bg-black">
-          <div onClick={() => navigate('/')} className="cursor-pointer">
+          <div onClick={() => navigate('/songs')} className="cursor-pointer">
             <img src={logo} alt="logo" className="w-full h-24 object-contain" />
           </div>
           <NavLinks />
@@ -75,7 +76,7 @@ const Sidebar = () => {
             </button>)}
         </div>
       )}
-      <div className="hidden md:block w-18 h-16 mt-4">
+      <div onClick={() => navigate(`/user/${_id}`)} className="hidden md:block w-18 h-16 mt-4 cursor-pointer duration-300">
         {picture && (<img src={picture} className="w-14 h-14 object-center object-cover rounded-full" />)}
       </div>
     </div>

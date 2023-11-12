@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GoogleLogin } from '@react-oauth/google';
 import { signIn } from '../../redux/features/auth/authSlice';
+import landing from '../../assets/landingFour.jpeg'
 
 const Signin = () => {
   const { given_name, email, picture } = useSelector((state) => state.auth);
@@ -20,7 +21,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="md:relative flex flex-col items-center justify-center w-full h-screen md:h-auto">
+    <div className="md:relative flex flex-col md:flex-row justify-center w-full bg-red h-screen md:h-full md:mt-20 rounded-2xl">
       <div className="z-10">
         <div className="bg-bg_alt w-[320px] md:w-[440px] rounded-2xl p-8">
           <div className="flex items-center p-2 flex-col gap-4 bg-bg_light">
@@ -44,6 +45,9 @@ const Signin = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="w-full h-full bg-cl p-4 rounded-2xl">
+        <img src={landing} className='h-full object-cover w-full rounded-3xl' alt="landing" />
       </div>
     </div>
   );

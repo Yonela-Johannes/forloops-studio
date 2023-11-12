@@ -11,15 +11,16 @@ const SongDetails = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-        const result = await axios.get(baseUrl + 'songs/' + songid);
+        const result = await axios.get(`${baseUrl}songs/${songid}`);
+        console.log(result)
         setSong(result?.data)
       }
       fetchData()
-    }, [])
+    }, [songid])
 
     return(
       <div className="flex flex-col">
-        <DetailsHeader song={song} />
+        <DetailsHeader song={song} setSong={setSong} />
         <div className="mb-10">
           <h2 className="text-gray-300 mt-2 text-[22px] font-bold">Lyrics:</h2>
           <p className="mt-5 px-20">{song?.lyrics}</p>

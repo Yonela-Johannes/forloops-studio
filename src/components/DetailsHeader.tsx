@@ -8,19 +8,34 @@ import { Helmet } from 'react-helmet';
 import { baseUrl } from '../constants/base_urls';
 import { FaDownload, FaPlay } from 'react-icons/fa';
 import axios from 'axios';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { MdDownload } from 'react-icons/md';
 
-const DetailsHeader = ({ song }) => {
-  const dispatch = useDispatch()
+const DetailsHeader = ({ song, setSong }) => {
+  const dispatch = useDispatch();
+  const { _id } = useSelector((state) => state.auth);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
 
-  const handlePlayClick = () => {
+  const handlePlayClick = async () => {
     dispatch(setActiveSong({ song }))
     dispatch(playPause(true))
+    await axios.patch(`${baseUrl}songs/play/${song?._id}`);
+    const result = await axios.get(`${baseUrl}songs/${song?._id}`);
+    setSong(result?.data)
   }
+
+  const handleLike = async () => {
+    await axios.patch(`${baseUrl}songs/like/${song?._id}`, {
+      userId: _id,
+    });
+    const response = await axios.get(`${baseUrl}songs/${song?._id}`);
+    console.log(response.data)
+    setSong(response?.data);
+  };
 
   const handleDownload = async () => {
     // Create a new Blob object from the audio URL.
@@ -45,6 +60,9 @@ const DetailsHeader = ({ song }) => {
       .catch(error => {
         console.error('Error downloading the audio:', error);
       })
+      await axios.patch(`${baseUrl}songs/download/${song?._id}`, {userId: _id});
+      const result = await axios.get(`${baseUrl}songs/${song?._id}`)
+      setSong(result?.data);
   };
 
   return(
@@ -80,20 +98,28 @@ const DetailsHeader = ({ song }) => {
             <p className="text-base mt-2 text-white">
                 {song?.genre}
             </p>
+            <div className="flex gap-4 items-center text-white pt-4">
+              <div className="flex gap-2 items-center">
+                <FaPlay size={15} />
+                <p className=''>{song?.playCount}</p>
+              </div>
+              <div onClick={handleLike} className={`flex items-center justify-center rounded-full ${_id ? 'hover:bg-background w-min duration-300 cursor-pointer' : ''}  p-1  gap-1 text-sm`} >
+                {song?.lovedUsers?.find((user) => user?._id === _id) ? (
+                    <AiFillHeart size={18} />
+                  ) : (
+                    <AiOutlineHeart size={18} />
+                  )}
+                {song?.loveCount}
+              </div>
+              <div  onClick={handleDownload} className="flex gap-2 items-center hover:bg-background duration-300 p-1 rounded-full cursor-pointer">
+                  <MdDownload size={18} />
+                  <p className=''>{song?.downloadCount}</p>
+              </div>
+            </div>
         </div>
       </div>
       <div className="flex flex-col items-center mt-4">
-        <button  onClick={handleDownload} className='bg-black py-2 px-4 rounded-full cursor-pointer font-bold'>Download {song?.title}</button>
-        <div className="flex gap-4 items-center text-gray-500 pt-4">
-          <div className="flex gap-2 items-center">
-            <FaPlay size={16} />
-            <p className=''>{song?.playCount}</p>
-          </div>
-          <div className="flex gap-2 items-center">
-              <FaDownload size={16} />
-              <p className=''>{song?.downloadCount}</p>
-          </div>
-        </div>
+        <button onClick={handleDownload} className='bg-red py-2 px-4 rounded-full cursor-pointer font-bold'>Download {song?.title}</button>
       </div>
     </div>
           {/* Add the Helmet section for Open Graph meta tags */}
