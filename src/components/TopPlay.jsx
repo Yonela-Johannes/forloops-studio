@@ -89,10 +89,10 @@ const TopPlay = () => {
     <div ref={divRef} className="hidden 2xl:flex xl:ml-6 ml-0 xl:mb-0 rounded-lg mb-6 w-[240px] md:w-[300px] bg-black flex-col py-8 px-4">
       <div className="w-full flex flex-col">
         <div className="flex flex-row justify-between items-center">
-          <h2 className="text-gray-500 font-bold text-md">Top Charts</h2>
+          <h2 className="text-gray-500 font-bold text-md">Artists</h2>
         </div>
 
-        <div className="mt-4 flex flex-col gap-1">
+        {/* <div className="mt-4 flex flex-col gap-1">
           {topPlayCharts?.length > 0 && topPlayCharts?.map((song, i) => (
             <TopChartCard
               key={song._id}
@@ -104,7 +104,7 @@ const TopPlay = () => {
               handlePlayClick={() => handlePlayClick(song, i)}
             />
           ))}
-        </div>
+        </div> */}
       </div>
 
       <div className="w-full flex flex-col mt-8">

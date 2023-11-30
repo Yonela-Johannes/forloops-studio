@@ -12,6 +12,7 @@ import Select from 'react-select'
 
 const CreateSong = () => {
   const { _id, artist } = useSelector((state) => state.auth);
+  const [user, setUser] = useState()
   const [imageSrc, setImageSrc] = useState(null);
   const [imageLink, setImageLink] = useState('');
   const [songLink, setSongLink] = useState('');
@@ -32,14 +33,22 @@ const CreateSong = () => {
   });
 
   useEffect(() => {
-    const fetchAlbums = async () => {
-      const response = await axios.get(`${baseUrl}album/artist-albums/${artist?._id}`);
-      setAlbums(response?.data);
+    const fetchUser = async () => {
+      const response = await axios.get(`${baseUrl}user/user/${_id}`);
+      setUser(response?.data?.user);
     };
-    fetchAlbums();
-  }, []);
+    fetchUser();
+  }, [_id]);
 
-  console.log(inputData);
+  useEffect(() => {
+    if (user?.artist?._id) {
+      const fetchAlbums = async () => {
+        const response = await axios.get(`${baseUrl}album/artist-albums/${user?.artist?._id}`);
+        setAlbums(response?.data);
+      };
+      fetchAlbums();
+    }
+  }, [_id, user]);
 
   useEffect(() => {
     const option = [];
@@ -102,7 +111,7 @@ const CreateSong = () => {
             cover: imageLink,
             song: songLink,
             userId: _id,
-            artistId: artist?._id
+            artistId: user?.artist?._id
           })
           toast("Song successully saved")
           console.log(response)

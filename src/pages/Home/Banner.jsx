@@ -13,7 +13,7 @@ export const Banner = () => {
                 {/* left side */}
                 <div className='md:w-1/2 space-y-8'>
                     <h1 className='text-2xl lg:text-6xl md:text-5xl font-bold text-white mb-5 lg:leading-tight leading-snug'>Listen to your <span className='text-red'>favourite local music</span></h1>
-                    <p>Beyond just a music website, it's a thriving community where artists and fans connect in a visually appealing and intuitive space, and a community-driven ethos.</p>
+                    <p>Beyond just music, it's a thriving community where artists and fans connect in a visually appealing and intuitive space, and a community-driven ethos.</p>
                 </div>
             </div>
         </div>

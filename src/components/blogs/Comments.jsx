@@ -154,11 +154,10 @@ const Comments = ({
                       value={editComment}
                       onChange={(e) => setEditComment(e.target.value)}
                       className="bg-primary md:px-6 p-2 md:py-4 text-md font-medium  bg-gray-200 w-full focus:outline-none flex-1 rounded-lg"
-                      placeholder="Add comment.."
-                  />
-              <button className="bg-slate-500 p-1 text-sm md:py-2 md:px-4 rounded-md md:text-md border-none" onClick={() => handleUpdate(com)}>
-                Save
-              </button>
+                      placeholder="Add comment.." />
+                      <button className="bg-slate-500 p-1 text-sm md:py-2 md:px-4 rounded-md md:text-md border-none" onClick={() => handleUpdate(com)}>
+                        Save
+                      </button>
                   </div>
                 ) : (<p className="ml-16 text-[13px] md:text-[16px] md:mr-8 text-background">{com?.comment}</p>)}
                 <div className="flex flex-col gap-4">
