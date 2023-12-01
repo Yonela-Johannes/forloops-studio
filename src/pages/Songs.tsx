@@ -26,7 +26,7 @@ const Songs = () => {
           <div className="flex flex-wrap sm:justify-start justify-center gap-8">
               {songs?.map((song, i) => (
                 <SongCard
-                    key={song.key}
+                    key={song?._id}
                     song={song}
                     activeSong={activeSong}
                     isPlaying={isPlaying}
