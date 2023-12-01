@@ -1,9 +1,9 @@
 let apiUrl;
 
 if (process.env.NODE_ENV === 'production') {
-  apiUrl = 'https://forloops-studio.vercel.app/';
+  apiUrl = 'https://mysite-server-ruddy.vercel.app/api/';
 } else {
-  apiUrl = 'https://mysite-server-ruddy.vercel.app/';
+  apiUrl = 'http://localhost:4000/api/';
 }
 
 export const baseUrl = apiUrl;
