@@ -7,10 +7,10 @@ import { FallingLines } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../../constants/base_urls";
 import { useSelector } from "react-redux";
-import React from 'react'
-import Select from 'react-select'
-import SunEditor, { buttonList } from "suneditor-react";
-import 'suneditor/dist/css/suneditor.min.css';
+import React from 'react';
+import Select from 'react-select';
+// import SunEditor, { buttonList } from "suneditor-react";
+// import 'suneditor/dist/css/suneditor.min.css';
 
 const EditBlog = () => {
   const { _id } = useSelector((state) => state.auth);
@@ -127,13 +127,13 @@ const EditBlog = () => {
                   }
                   className='rounded w-full outline-none text-md  p-2'
                 />
-                  <SunEditor
+                  {/* <SunEditor
                     height="400"
                     defaultValue={blog?.post}
                     setContents={blog?.post}
                     placeholder="Please type here..."
                     onChange={(content) => setInputData({...inputData, post: content})}
-                  />
+                  /> */}
                 <div className="cursor-pointer text-white">
                     <Dropzone
                       multiple={false}
