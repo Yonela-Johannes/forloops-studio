@@ -12,7 +12,6 @@ const SongDetails = () => {
     useEffect(() => {
       const fetchData = async () => {
         const result = await axios.get(`${baseUrl}songs/${songid}`);
-        console.log(result)
         setSong(result?.data)
       }
       fetchData()

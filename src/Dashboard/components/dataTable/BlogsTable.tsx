@@ -14,7 +14,6 @@ const DataTable = ( rows ) => {
     headerName: "Image",
     width: 200,
     renderCell: (params) => {
-      console.log(params)
       return (
         <img src={params?.row?.image}  className="w-16 h-16 object-cover rounded-lg" />
       );
@@ -26,7 +25,6 @@ const DataTable = ( rows ) => {
     headerName: "Title",
     width: 200,
     renderCell: (params) => {
-      console.log(params)
       return (
         <p className="">{params?.row?.title?.slice(0, 20) + "..."}</p>
       );
@@ -38,7 +36,6 @@ const DataTable = ( rows ) => {
     headerName: "Description",
     width: 250,
     renderCell: (params) => {
-      console.log(params)
       return (
         <p className="">{params?.row?.subtitle?.slice(0, 50) + "..."}</p>
       );

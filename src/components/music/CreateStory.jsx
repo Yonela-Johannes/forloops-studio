@@ -114,9 +114,7 @@ const CreateSong = () => {
             artistId: user?.artist?._id
           })
           toast("Song successully saved")
-          console.log(response)
           const res = await axios.get(`${baseUrl}songs/${response?.data?._id}`);
-          console.log({res})
           if(res){
             toast("New song upload successful")
             setLoading(false);
@@ -190,7 +188,6 @@ const CreateSong = () => {
                 multiple={false}
                 onDrop={(acceptedFiles) => acceptedFiles.map((file) => {
                     const { type } = file;
-                    console.log(type)
                     if (
                       type === "image/png" ||
                       type === "image/webp" ||

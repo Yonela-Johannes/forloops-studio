@@ -85,7 +85,6 @@ const CreateCategory = ({setCategoryPopup}) => {
                 multiple={false}
                 onDrop={(acceptedFiles) => acceptedFiles.map((file) => {
                     const { type } = file;
-                    console.log(type)
                     if (
                       type === "image/png" ||
                       type === "image/webp" ||

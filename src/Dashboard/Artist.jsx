@@ -35,7 +35,6 @@ const Artist = () => {
       fetchUser();
     }
   }, [id]);
-  console.log(artist)
 
   const updateArtist = async (e) => {
     e.preventDefault();

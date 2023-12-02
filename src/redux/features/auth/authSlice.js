@@ -15,7 +15,6 @@ const initialState = {
 };
 
 export const signIn = createAsyncThunk('user/signin', async (userId) => {
-  console.log(userId)
   const response = await axios.post(`${baseUrl}user/login`, { oauthCode: userId });
   return response.data;
 });

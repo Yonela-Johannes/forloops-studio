@@ -33,7 +33,6 @@ const DetailsHeader = ({ song, setSong }) => {
       userId: _id,
     });
     const response = await axios.get(`${baseUrl}songs/${song?._id}`);
-    console.log(response.data)
     setSong(response?.data);
   };
 

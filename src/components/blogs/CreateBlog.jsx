@@ -36,8 +36,6 @@ const CreateBlog = () => {
     fetchAlbums();
   }, []);
 
-  console.log(inputData);
-
   useEffect(() => {
     const option = [];
     categories?.map((category) => (
@@ -62,7 +60,6 @@ const CreateBlog = () => {
         formData
       )
 
-      console.log(result)
       const response = await axios.post(baseUrl + 'blog',{
         ...inputData,
         image: result?.data?.url,
@@ -70,7 +67,6 @@ const CreateBlog = () => {
       });
 
       toast("Post successully saved")
-      console.log(response)
       await axios.get(`${baseUrl}blog`);
       setLoading(false);
       setImageSrc('')
@@ -130,7 +126,6 @@ const CreateBlog = () => {
                       multiple={false}
                       onDrop={(acceptedFiles) => acceptedFiles.map((file) => {
                           const { type } = file;
-                          console.log(type)
                           if (
                             type === "image/png" ||
                             type === "image/webp" ||

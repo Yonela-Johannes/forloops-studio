@@ -19,7 +19,6 @@ const Search = () => {
     fetchData()
   }, [searchTerm])
 
-  console.log(songs)
     return (
         <div className='flex flex-col text-center'>
             <div className='w-full flex justify-between px-4 items-center sm:flex-row flex-col mt-4 mb-10'>

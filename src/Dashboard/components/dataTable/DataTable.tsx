@@ -13,7 +13,6 @@ const DataTable = ( rows ) => {
     headerName: "Avatar",
     width: 80,
     renderCell: (params) => {
-      console.log(params)
       return (
         <img src={params?.row?.picture}  className="w-12 h-12 object-cover rounded-full" />
       );
@@ -25,7 +24,6 @@ const DataTable = ( rows ) => {
     headerName: "Quote",
     width: 200,
     renderCell: (params) => {
-      console.log(params)
       return (
         <p>{params?.row?.quote?.length > 60 ? params?.row?.quote?.slice(0, 60) + '...' : params?.row?.quote} </p>
       );
