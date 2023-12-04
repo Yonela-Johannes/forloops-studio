@@ -18,13 +18,20 @@ const SongDetails = () => {
     }, [songid])
 
     return(
-      <div className="flex flex-col">
-        <DetailsHeader song={song} setSong={setSong} />
-        <div className="mb-10">
-          <h2 className="text-gray-300 mt-2 text-[22px] font-bold">Lyrics:</h2>
-          <p className="mt-5 px-20">{song?.lyrics}</p>
+      <>
+      {song ? (
+        <div className="flex flex-col">
+          <DetailsHeader song={song} setSong={setSong} />
+          <div className="mb-10">
+            <h2 className="text-gray-300 mt-2 text-[22px] font-bold">Lyrics:</h2>
+            <p className="mt-5 px-20">{song?.lyrics}</p>
+          </div>
         </div>
-      </div>
+
+      ): (
+        <Loader />
+      )}
+      </>
     )
 };
 

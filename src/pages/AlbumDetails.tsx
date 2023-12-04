@@ -4,7 +4,7 @@ import { useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
 import { baseUrl } from '../constants/base_urls';
 import AlbumDetailsScreen from '../components/AlbumDetailsScreen';
-import { SongBar } from '../components';
+import { Loader, SongBar } from '../components';
 import { playPause, setActiveSong } from '../redux/features/playerSlice'
 
 const AlbumDetails = () => {
@@ -52,7 +52,7 @@ const AlbumDetails = () => {
           <AlbumDetailsScreen album={album} />
         </div>
         <div className="md:w-[700px] md:pl-4 rounded-r-xl">
-            {songs?.map((song, i) => (
+            {songs ? songs?.map((song, i) => (
               <SongBar
                 song={song}
                 key={song?._id}
@@ -64,7 +64,9 @@ const AlbumDetails = () => {
                 albumid={albumid}
                 setSongs={setSongs}
               />
-            ))}
+            )): (
+              <Loader />
+            )}
           </div>
         </div>
     )

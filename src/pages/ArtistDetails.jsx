@@ -51,7 +51,7 @@ const ArtistDetails = () => {
       <div className='flex flex-col text-center'>
         <h2 className="font-bold text-xl text-white text-left mt-4 mb-10">{artist?.name}&rsquo;s Albums</h2>
         <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-          {albums?.map((album, i) => (
+          {albums ? albums?.map((album, i) => (
             <AlbumCard
               key={album?._id}
               album={album}
@@ -60,7 +60,9 @@ const ArtistDetails = () => {
               data={albums}
               i={i}
             />
-          ))}
+          )): (
+            <Loader />
+          )}
         </div>
         </div>
         <RelatedSongs
