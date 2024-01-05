@@ -18,7 +18,7 @@ const Footer = () => {
     {
       name: "Instagram",
       icon: <AiFillInstagram />,
-      link: "https://www.instagram.com/yonelajohannes/",
+      link: "https://www.instagram.com/johannesyonela/",
     },
   ];
 

@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter base="/">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <GoogleOAuthProvider clientId="401884818052-rkf2b70mavpbhrtslml1noir4mrd191j.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
           <App />
         </GoogleOAuthProvider>
       </PersistGate>

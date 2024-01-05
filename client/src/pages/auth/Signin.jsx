@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GoogleLogin } from '@react-oauth/google';
 import { signIn } from '../../redux/features/auth/authSlice';
 import landing from '../../assets/landingFour.jpeg'
+import { callback, website } from '../../constants/base_urls';
 
 const Signin = () => {
   const { given_name, email, picture } = useSelector((state) => state.auth);
@@ -33,10 +34,10 @@ const Signin = () => {
               onError={() => {
                 console.log('Login Failed');
               }}
-              login_uri="http://localhost:3000"
-              redirect_uri="http://localhost:3000/api/auth/callback/google"
-              cancel_on_tap_outside={true}
-              useOneTap={true}
+              login_uri={website}
+              redirect_uri={callback}
+              cancel_on_tap_outside
+              useOneTap
               size="large"
               theme="filled_black"
               text="continue_with"

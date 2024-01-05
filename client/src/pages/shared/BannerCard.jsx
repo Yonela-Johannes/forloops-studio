@@ -29,8 +29,8 @@ function BannerCard() {
         modules={[EffectCards]}
         className="mySwiper"
       >
-      {artists?.map((artist) => (
-        <SwiperSlide><img src={artist?.picture} className='w-full' alt="slide" /></SwiperSlide>
+      {artists?.map((artist, i) => (
+        <SwiperSlide key={i}><img src={artist?.picture} className='w-full' alt="slide" /></SwiperSlide>
       ))}
       </Swiper>
     </div>
