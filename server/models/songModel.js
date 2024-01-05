@@ -20,11 +20,12 @@ const songSchema = mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true
+    default: new Date()
   },
   album: {
     type: mongoose.Types.ObjectId,
-    ref: "Album",
+    ref:'Album',
+    default: null,
   },
   cover: {
     type: String,

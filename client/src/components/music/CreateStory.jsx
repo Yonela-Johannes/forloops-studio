@@ -11,7 +11,7 @@ import React from 'react'
 import Select from 'react-select'
 
 const CreateSong = () => {
-  const { _id, artist } = useSelector((state) => state.auth);
+  const { _id } = useSelector((state) => state.auth);
   const [user, setUser] = useState()
   const [imageSrc, setImageSrc] = useState(null);
   const [imageLink, setImageLink] = useState('');
@@ -70,52 +70,42 @@ const CreateSong = () => {
       formData.append("file", inputData?.cover);
       formData.append("upload_preset", "nomiupload");
       setLoading(true);
-      await axios
+      const imageResponse = await axios
       .post(
         "https://api.cloudinary.com/v1_1/globalnomi/image/upload",
         formData
       )
-      .then((res) => {
-      toast("Cover Image upload successful")
-      setLoading(false)
-      setImageLink(res?.data.url)
-    })
-    .catch(error => {
-        console.log(error)
-        toast("Error creating post")
-        setLoading(false)
-      })
 
       formData.append("file", inputData?.song);
       formData.append("upload_preset", "nomiupload");
       setLoading(true);
-      await axios
+      const res = await axios
       .post(
         "https://api.cloudinary.com/v1_1/globalnomi/video/upload",
         formData
       )
-      .then((res) => {
-      toast("Song upload successful")
-      setLoading(false)
-      setSongLink(res?.data.url)
-    })
-    .catch(error => {
-        console.log(error)
-        toast("Error creating post")
-        setLoading(false)
-      })
 
-      if(imageLink && songLink){
+      if (!imageResponse || !imageResponse?.data?.url) {
+        setLoading(false)
+        return toast("Error uploading image");
+      }
+      if (!res || !res?.data?.url) {
+        setLoading(false)
+        return toast("Error uploading song");
+      }
+
+      if(imageResponse && res){
           const response = await axios.post(baseUrl + 'songs',{
             ...inputData,
-            cover: imageLink,
-            song: songLink,
+            cover: imageResponse?.data?.url,
+            song: res && res?.data?.url,
             userId: _id,
             artistId: user?.artist?._id
           })
-          toast("Song successully saved")
-          const res = await axios.get(`${baseUrl}songs/${response?.data?._id}`);
-          if(res){
+          toast("Song successully saved");
+          setLoading(false)
+          const result = await axios.get(`${baseUrl}songs/${response?.data?._id}`);
+          if(result){
             toast("New song upload successful")
             setLoading(false);
             setSongSrc(null)
@@ -123,7 +113,7 @@ const CreateSong = () => {
             setImageLink('')
             setSongLink('')
             setInputData({});
-            navigate(`/songs/${res?.data?._id}`);
+            navigate(`/songs/${result?.data?._id}`);
           }else {
             toast("Error, we could not fetch song")
           }

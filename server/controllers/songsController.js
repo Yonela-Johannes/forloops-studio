@@ -96,12 +96,12 @@ const getSong = async (req, res) => {
 const addSong = async (req, res) => {
   const { userId, title, cover, album, lyrics, date, artistId, song } = req.body
 
-  console.log(req.body)
   try {
-    const newSong = new Song({song, title, cover, album, lyrics, date, artist: artistId, user: userId })
+    const newSong = new Song({song, title, cover, album: album ? album : null, lyrics, date, artist: artistId, user: userId })
     await newSong.save();
     res.status(200).json(newSong);
   } catch (error) {
+    console.log(error.message)
     res.status(409).json({message: error.message})
   }
 }
