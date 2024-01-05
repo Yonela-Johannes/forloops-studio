@@ -52,7 +52,7 @@ const AlbumDetails = () => {
           <AlbumDetailsScreen album={album} />
         </div>
         <div className="md:w-[700px] md:pl-4 rounded-r-xl">
-            {songs ? songs?.map((song, i) => (
+            {songs?.length ? songs?.map((song, i) => (
               <SongBar
                 song={song}
                 key={song?._id}

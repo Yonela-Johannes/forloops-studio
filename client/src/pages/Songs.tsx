@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Error, Loader, SongCard } from '../components'
+import { Loader, SongCard } from '../components'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { baseUrl } from '../constants/base_urls'
@@ -9,7 +9,6 @@ const Songs = () => {
   // const [music, setMusic] = useState()
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const [songs, setSongs]  = useState([])
-  // if(isFetching, !data) return <Loader title="loading songs" />;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +23,7 @@ const Songs = () => {
       <div className='flex flex-grow flex-col text-center'>
         <h2 className="font-bold text-3xl text-white text-left mt-4 mb-10">Discover Top Songs</h2>
           <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-              {songs ? songs?.map((song, i) => (
+              {songs?.length ? songs?.map((song, i) => (
                 <SongCard
                     key={song?._id}
                     song={song}
@@ -34,7 +33,7 @@ const Songs = () => {
                     i={i}
                 />
               )): (
-                <Loader />
+                <Loader title="Loading music" />
               )}
           </div>
       </div>

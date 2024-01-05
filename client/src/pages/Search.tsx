@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import axios from "axios";
 import { baseUrl } from "../constants/base_urls";
 import AlbumCard from "../components/AlbumCard";
+import Loader from '../components/Loader';
 
 const Search = () => {
   const  { searchTerm }  = useParams()
@@ -26,13 +27,13 @@ const Search = () => {
             </div>
 
             <div className="flex flex-wrap sm:justify-start justify-center gap-8 md:px-10">
-                {songs?.map((song, i) => (
+                {songs?.length ? songs?.map((song, i) => (
                   <>
                     {song?.quote && (<ArtistCard key={song?._id} artist={song} />)}
                     {song?.description && (<AlbumCard key={song?._id} album={song}  />)}
                     {song?.lyrics && (<SongCard key={song?._id} song={song} activeSong={activeSong} isPlaying={isPlaying} data={songs} i={i}/>)}
                   </>
-                ))}
+                )) : (<Loader />)}
             </div>
         </div>
     )
