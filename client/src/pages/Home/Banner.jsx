@@ -1,13 +1,12 @@
 import React from 'react'
-import BannerCard from '../shared/BannerCard'
 
 export const Banner = () => {
     return (
         <div className=' bg-cl  px-4 lg:px-24 flex items-center'>
             <div className='flex flex-col lg:flex-row-reverse justify-between items-center gap-12 py-12 md:py-40'>
                 {/* right side */}
-                <div className='flex items-center justify-center w-[180px] h-full'>
-                    <BannerCard />
+                <div className='flex items-center justify-center w-[180px] h-[180px]'>
+
                 </div>
 
                 {/* left side */}
