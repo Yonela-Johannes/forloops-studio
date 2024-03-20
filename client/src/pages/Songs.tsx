@@ -6,7 +6,6 @@ import { baseUrl } from '../constants/base_urls'
 import TopPlay from '../components/TopPlay'
 
 const Songs = () => {
-  // const [music, setMusic] = useState()
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const [songs, setSongs]  = useState([])
 

@@ -58,8 +58,6 @@ const App = () => {
                   <Route path="/songs" element={<Songs />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/create-blog" element={<PrivateRoute><BlogPopup /></PrivateRoute>} />
-                  <Route path="/blogs" element={<Blogs />} />
-                  <Route path="/blogs/:id" element={<Blog />} />
                   <Route path="/signin" element={<Signin />} />
                   <Route path="/albums" element={<Albums />} />
                   <Route path="/upload-song" element={<SongPopup />} />

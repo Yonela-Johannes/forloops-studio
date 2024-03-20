@@ -100,27 +100,6 @@ const Searchbar = () => {
               <p className="hidden md:block">About</p>
             </button>
           </div>
-          <div className="flex gap-x-4 items-center">
-            <button
-              onClick={() => navigate('/blogs')}
-              className="
-              text-neutral-300
-              font-medium
-              w-full
-              rounded-full
-              bg-black
-              border
-              border-transparent
-              lg:px-3
-              lg:py-2
-              p-2
-              hover:opacity-75
-              transition"
-            >
-              <div className="md:hidden"><MdFeed /></div>
-              <p className="hidden md:block">Blogs</p>
-            </button>
-          </div>
       </div>
       <div className="hidden 2xl:block w-[400px]">
         <form autoComplete="off" className="p2" onSubmit={handleSubmit}>

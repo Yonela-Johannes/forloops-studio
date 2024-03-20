@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import axios from "axios";
 import { baseUrl } from "../constants/base_urls";
 import AlbumCard from "../components/AlbumCard";
-import Loader from '../components/Loader';
 
 const Search = () => {
   const  { searchTerm }  = useParams()
